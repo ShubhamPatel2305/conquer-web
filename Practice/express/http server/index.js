@@ -21,7 +21,7 @@ app.get("/test",(req,res)=>{
     let a= Math.floor(req.query.n);  // math.floor automatically converts string to number
     let b=Math.floor(req.query.a);
     console.log(sum(a,b));
-    res.send("hahaha");
+    res.send(sum(a,b).toString()); // always send response after converting to string
 });
 
 function sum(a,b){
