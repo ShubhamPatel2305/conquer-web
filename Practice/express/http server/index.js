@@ -15,8 +15,18 @@ app.get("/", (req,res)=>{
 });
 
 app.get("/test",(req,res)=>{
+
+    //localhost:3000/test?n=10&a=50
+
+    let a= Math.floor(req.query.n);  // math.floor automatically converts string to number
+    let b=Math.floor(req.query.a);
+    console.log(sum(a,b));
     res.send("hahaha");
 });
+
+function sum(a,b){
+    return a+b;
+}
 
 app.listen(port,()=>{
     console.log("listening to port: ",port);
