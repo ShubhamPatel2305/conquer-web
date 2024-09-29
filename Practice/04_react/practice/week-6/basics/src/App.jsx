@@ -4,6 +4,7 @@ import './App.css'
 import Test from './components/test'
 import ReduceReRenderUsingMemo from './components/ReduceReRenderUsingMemo'
 import Todo from './components/Todo'
+import WrapperComponents from './components/WrapperComponents'
 
 var globalCounter=4;
 
@@ -33,15 +34,31 @@ function App() {
   return (
     <>
       <h1>React Basics</h1>
+
       <Test />
+
       <ReduceReRenderUsingMemo />
+
       {/* send all todos as props to Todo component one by one as the todo accepys only description of todo it has to render */}
+
       {todos.map((todo)=>(
         // eslint-disable-next-line react/jsx-key
         <Todo  key={todo.id} description={todo.description} />
       ))}
       <button onClick={handleClick} style={{border:"1px solid black",width:"200px",height:"50px"}}>Add a new todo</button>
+
+      <hr />
+
+      <WrapperComponents child={<WrappedComponent />} />
+      <WrapperComponents child={<WrappedComponent />} />
+      <WrapperComponents child={<WrappedComponent />} />
     </>
+  )
+}
+
+function WrappedComponent(){
+  return (
+    <div>Hello world</div>
   )
 }
 
