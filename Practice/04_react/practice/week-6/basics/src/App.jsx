@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import './App.css'
 import Test from './components/test'
+import ReduceReRenderUsingMemo from './components/ReduceReRenderUsingMemo'
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
     <>
       <h1>React Basics</h1>
       <Test />
+      <ReduceReRenderUsingMemo />
     </>
   )
 }
