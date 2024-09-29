@@ -4,7 +4,8 @@ import './App.css'
 import Test from './components/test'
 import ReduceReRenderUsingMemo from './components/ReduceReRenderUsingMemo'
 import Todo from './components/Todo'
-import WrapperComponents from './components/WrapperComponents'
+import DumbWrapperComponents from './components/DumbWrapperComponents'
+import SmartWrapperComponents from './components/SmartWrapperComponents'
 
 var globalCounter=4;
 
@@ -49,9 +50,23 @@ function App() {
 
       <hr />
 
-      <WrapperComponents child={<WrappedComponent />} />
-      <WrapperComponents child={<WrappedComponent />} />
-      <WrapperComponents child={<WrappedComponent />} />
+      <DumbWrapperComponents child={<WrappedComponent />} />
+      <DumbWrapperComponents child={<WrappedComponent />} />
+      <DumbWrapperComponents child={<WrappedComponent />} />
+
+      <hr />
+
+
+      <SmartWrapperComponents>
+        <div>Hey there</div>
+        <WrappedComponent />
+      </SmartWrapperComponents>
+
+      <SmartWrapperComponents>
+        <SmartWrapperComponents>
+          <WrappedComponent />
+        </SmartWrapperComponents>
+      </SmartWrapperComponents>
     </>
   )
 }
