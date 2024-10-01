@@ -13,6 +13,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Hooks from './components/Hooks';
 import UseEffect2 from './components/useEffect2'
 import UseEffect3 from './components/UseEffect3'
+import UseCallback from './components/UseCallback'
 
 var globalCounter = 4;
 
@@ -93,6 +94,7 @@ function App() {
           <Route path="/hooks" element={<Hooks />} />
           <Route path="/useeffect2" element={<UseEffect2 />} />
           <Route path='/useeffect3' element={<UseEffect3 />} />
+          <Route path="/usecallback1" element={<UseCallback />} />
         </Routes>
       </>
     </Router>
