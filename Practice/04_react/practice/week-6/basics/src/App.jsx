@@ -6,75 +6,101 @@ import ReduceReRenderUsingMemo from './components/ReduceReRenderUsingMemo'
 import Todo from './components/Todo'
 import DumbWrapperComponents from './components/DumbWrapperComponents'
 import SmartWrapperComponents from './components/SmartWrapperComponents'
+import UseEffectDemo from './components/UseEffectDemo'
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
-var globalCounter=4;
+// Import the Hooks component
+import Hooks from './components/Hooks';
+import UseEffect2 from './components/useEffect2'
+
+var globalCounter = 4;
 
 function App() {
-
-  const [todos, settodos]=useState([{
-    id:1,
-    description:"Learn React",
-  },
-  {
-    id:2,
-    description:"Learn Node",
-  },
-  {
-    id:3,
-    description:"Learn Mongo",
-  } 
+  const [todos, settodos] = useState([
+    {
+      id: 1,
+      description: "Learn React",
+    },
+    {
+      id: 2,
+      description: "Learn Node",
+    },
+    {
+      id: 3,
+      description: "Learn Mongo",
+    }
   ]);
 
-  const handleClick = ()=>{
+  const handleClick = () => {
     // add an element : "new task" to todos array on each click
-    settodos([...todos,{
-      id:globalCounter++,
-      description:"new task"
+    settodos([...todos, {
+      id: globalCounter++,
+      description: "new task"
     }]);
   }
+
   return (
-    <>
-      <h1>React Basics</h1>
+    <Router>
+      <>
+        <h1>React Basics</h1>
 
-      <Test />
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/hooks">Hooks</Link></li>
+          </ul>
+        </nav>
 
-      <ReduceReRenderUsingMemo />
+        <Routes>
+          {/* Other routes */}
+          <Route path="/" element={
+            <>
+              <Test />
 
-      {/* send all todos as props to Todo component one by one as the todo accepys only description of todo it has to render */}
+              <ReduceReRenderUsingMemo />
 
-      {todos.map((todo)=>(
-        // eslint-disable-next-line react/jsx-key
-        <Todo  key={todo.id} description={todo.description} />
-      ))}
-      <button onClick={handleClick} style={{border:"1px solid black",width:"200px",height:"50px"}}>Add a new todo</button>
+              {todos.map((todo) => (
+                <Todo key={todo.id} description={todo.description} />
+              ))}
+              <button onClick={handleClick} style={{ border: "1px solid black", width: "200px", height: "50px" }}>Add a new todo</button>
 
-      <hr />
+              <hr />
 
-      <DumbWrapperComponents child={<WrappedComponent />} />
-      <DumbWrapperComponents child={<WrappedComponent />} />
-      <DumbWrapperComponents child={<WrappedComponent />} />
+              <DumbWrapperComponents child={<WrappedComponent />} />
+              <DumbWrapperComponents child={<WrappedComponent />} />
+              <DumbWrapperComponents child={<WrappedComponent />} />
 
-      <hr />
+              <hr />
 
+              <SmartWrapperComponents>
+                <div>Hey there</div>
+                <WrappedComponent />
+              </SmartWrapperComponents>
 
-      <SmartWrapperComponents>
-        <div>Hey there</div>
-        <WrappedComponent />
-      </SmartWrapperComponents>
+              <SmartWrapperComponents>
+                <SmartWrapperComponents>
+                  <WrappedComponent />
+                </SmartWrapperComponents>
+              </SmartWrapperComponents>
 
-      <SmartWrapperComponents>
-        <SmartWrapperComponents>
-          <WrappedComponent />
-        </SmartWrapperComponents>
-      </SmartWrapperComponents>
-    </>
+              <hr />
+              <UseEffectDemo />
+            </>
+          } />
+
+          {/* New route for the Hooks component */}
+          <Route path="/hooks" element={<Hooks />} />
+          <Route path="/useeffect" element={<UseEffect2 />} />
+        </Routes>
+      </>
+    </Router>
   )
 }
 
-function WrappedComponent(){
+function WrappedComponent() {
   return (
     <div>Hello world</div>
   )
 }
 
-export default App
+export default App;
