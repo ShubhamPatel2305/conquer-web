@@ -14,7 +14,7 @@ const UseEffect2 = () => {
                 settodos(res.data);
             }
         )
-    });
+    },[]);
 
   return (
     <div>

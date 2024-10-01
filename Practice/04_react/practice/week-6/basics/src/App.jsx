@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 // Import the Hooks component
 import Hooks from './components/Hooks';
 import UseEffect2 from './components/useEffect2'
+import UseEffect3 from './components/UseEffect3'
 
 var globalCounter = 4;
 
@@ -90,7 +91,8 @@ function App() {
 
           {/* New route for the Hooks component */}
           <Route path="/hooks" element={<Hooks />} />
-          <Route path="/useeffect" element={<UseEffect2 />} />
+          <Route path="/useeffect2" element={<UseEffect2 />} />
+          <Route path='/useeffect3' element={<UseEffect3 />} />
         </Routes>
       </>
     </Router>
