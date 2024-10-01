@@ -14,6 +14,7 @@ import Hooks from './components/Hooks';
 import UseEffect2 from './components/useEffect2'
 import UseEffect3 from './components/UseEffect3'
 import UseCallback from './components/UseCallback'
+import UseMemo2 from './components/UseMemo2'
 
 var globalCounter = 4;
 
@@ -95,6 +96,7 @@ function App() {
           <Route path="/useeffect2" element={<UseEffect2 />} />
           <Route path='/useeffect3' element={<UseEffect3 />} />
           <Route path="/usecallback1" element={<UseCallback />} />
+          <Route path="/useMemo2" element={<UseMemo2 />} />
         </Routes>
       </>
     </Router>
