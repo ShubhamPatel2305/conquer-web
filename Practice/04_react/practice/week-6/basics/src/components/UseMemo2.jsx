@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 
 const UseMemo2 = () => {
     const [ip,setip]=useState(1);
@@ -13,6 +13,18 @@ const UseMemo2 = () => {
         }
         return c;
     },[ip]);
+
+    // const [finalCount, setfinalCount]=useState(0);
+    // useEffect(()=>{
+    //     let c=0;
+    //     for(let i=1;i<=ip;i++){
+    //         c+=i;
+    //         console.log(i);
+    //     }
+    //     setfinalCount(c);
+    // },[ip])
+
+
     return (
         <div>UseMemo2 
             <input type="number" onChange={(e)=>{
