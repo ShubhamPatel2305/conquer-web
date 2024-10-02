@@ -1,6 +1,12 @@
-
+/* eslint-disable no-unused-vars */
 import './App.css'
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
+import React,{Suspense} from 'react';
+const LazyLoading1 = React.lazy(() => import('./components/routing/LazyLoading1'));
+const LazyLoading2 = React.lazy(() => import('./components/routing/LazyLoading2'));
+const LazyLoading3 = React.lazy(() => import('./components/routing/LazyLoading3'));
+const LazyLoading4 = React.lazy(() => import('./components/routing/LazyLoading4'));
+
 
 function App() {
 
@@ -26,10 +32,17 @@ function App() {
 
     <BrowserRouter>
       <Appbar />
+      {/* While using lazy loaded components it is compulsory to wrap routes inside Suspense that helps giving a fallback component eample a loader gif till the lazy loaded component is fetched.*/}
+      <Suspense fallback={<div>Loading...</div>} >
       <Routes>
         <Route path="/test1" element={<Test1 />} />
         <Route path="/test2" element={<Test2 />} />
+        <Route path="/lazyloading1" element={<LazyLoading1 />} />
+        <Route path="/lazyloading2" element={<LazyLoading2 />} />
+        <Route path="/lazyloading3" element={<LazyLoading3 />} />
+        <Route path="/lazyloading4" element={<LazyLoading4 />} />
       </Routes>
+      </Suspense>
     </BrowserRouter>
     </>
   )
@@ -58,6 +71,42 @@ function Appbar(){
             }}>
               Test2
             </button>
+            </li>
+            <li>
+              <button  
+              onClick={()=>{
+                navigate("/lazyloading1")
+              }}
+              >
+                LazyLoading1
+              </button>
+            </li>
+            <li>
+              <button  
+              onClick={()=>{
+                navigate("/lazyloading2")
+              }}
+              >
+                LazyLoading2
+              </button>
+            </li>
+            <li>
+              <button  
+              onClick={()=>{
+                navigate("/lazyloading3")
+              }}
+              >
+                LazyLoading3
+              </button>
+            </li>
+            <li>
+              <button  
+              onClick={()=>{
+                navigate("/lazyloading4")
+              }}
+              >
+                LazyLoading4
+              </button>
             </li>
         </ul>
       </nav>
