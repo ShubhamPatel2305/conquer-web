@@ -2,6 +2,7 @@
 import './App.css'
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
 import React,{Suspense} from 'react';
+import Entry from './components/Context api/Entry';
 const LazyLoading1 = React.lazy(() => import('./components/routing/LazyLoading1'));
 const LazyLoading2 = React.lazy(() => import('./components/routing/LazyLoading2'));
 const LazyLoading3 = React.lazy(() => import('./components/routing/LazyLoading3'));
@@ -41,6 +42,8 @@ function App() {
         <Route path="/lazyloading2" element={<LazyLoading2 />} />
         <Route path="/lazyloading3" element={<LazyLoading3 />} />
         <Route path="/lazyloading4" element={<LazyLoading4 />} />
+
+        <Route path="/context" element={<Entry />}  />
       </Routes>
       </Suspense>
     </BrowserRouter>
