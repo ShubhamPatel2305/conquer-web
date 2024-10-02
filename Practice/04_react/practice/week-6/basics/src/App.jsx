@@ -23,6 +23,7 @@ import { Assignment3 } from './components/usememoassignment/Assignment3'
 import { Aassignment1 } from './components/useCallbackAssignment/Aassignment1'
 import { Aassignment2 } from './components/useCallbackAssignment/Aassignment2'
 import { Aaassignment1 } from './components/useRefAssignment/Aaasignment1'
+import { Aaassignment2 } from './components/useRefAssignment/Aaasignment2'
 
 var globalCounter = 4;
 
@@ -113,6 +114,7 @@ function App() {
           <Route path="/usecallbackassignment/as1" element={<Aassignment1 />} />
           <Route path="/usecallbackassignment/as2" element={<Aassignment2 />} />
           <Route path="/useRefassignment/as1" element={<Aaassignment1 />} />
+          <Route path="/useRefassignment/as2" element={<Aaassignment2 />} />
         </Routes>
       </>
     </Router>
