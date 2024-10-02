@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 
-const UseCallback = () => {
+const UseMemo1 = () => {
     const [ip,setip]=useState(1);
     const [data,setdata]=useState(0);
 
@@ -24,4 +24,4 @@ const UseCallback = () => {
   )
 }
 
-export default UseCallback
+export default UseMemo1
