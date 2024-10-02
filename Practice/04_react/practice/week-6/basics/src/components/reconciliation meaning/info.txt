@@ -1,0 +1,1 @@
+reconcilitation means the task that react does when you give it a state then it identifies ok what changes are made in this state and finds the diff between previous and current state then adds or deletes or updated the changes to dom this is call the reconciliation task doneby react which we dont have to do manually
