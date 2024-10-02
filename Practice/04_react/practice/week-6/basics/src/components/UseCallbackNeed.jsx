@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { memo, useState } from 'react'
+import React, { memo, useCallback, useState } from 'react'
 
 const UseCallbackNeed = () => {
     const [counter,setcounter]=useState(0);
@@ -10,6 +10,11 @@ const UseCallbackNeed = () => {
         console.log("Function")
         return (<><div>Inside function</div></>)
     }
+
+    var c=useCallback(()=>{
+        console.log("Use Callback Function")
+        return (<><div>Inside function</div></>)
+    },[])
   return (
     <div>UseCallbackNeed
         <button onClick={()=>{
@@ -19,6 +24,8 @@ const UseCallbackNeed = () => {
         <VariableProps a={a}/>
         <h1>Function props:</h1>
         <FunctionProps a={b}/>
+        <h1>UseCallback props:</h1>
+        <UseCallbackProp a={c} />
     </div>
   )
 }
@@ -33,4 +40,8 @@ const VariableProps=memo(function VariableProps({a}){
     return <div>{a}</div>
 })
 
+const UseCallbackProp=memo(function UseCallbackProps({a}){
+    console.log("usecallback prop component rerendered")
+    return <div>{a}</div>
+})
 export default UseCallbackNeed
