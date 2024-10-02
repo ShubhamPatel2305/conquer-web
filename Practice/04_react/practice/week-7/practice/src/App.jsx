@@ -1,35 +1,76 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <>  
+
+    <div>
+      <nav>
+        <ul>
+          {/* <li><a href="/test1">Test1</a></li>
+          <li><a href="/test2">Test2</a></li> */}
+          {/* above will cause whole page to reload while routing and thats what we dont want cause it will send a different html and js file where its not done in single page applications */}
+
+          {/* using window.location.href */}
+          {/* <li><a onClick={() => window.location.href = '/test1'}>Test1</a></li>
+          <li><a onClick={() => window.location.href = '/test2'}>Test2</a></li> */}
+          {/* above will cause whole page to reload while routing and thats what we dont want cause it will send a different html and js file where its not done in single page applications */}
+
+          {/* using useNavigate hook: the rule is it should be used onlyinside browser router or components called inside browser router so we will use it in appbar component called in it */}
+        </ul>
+      </nav>
+    </div>
+
+    <BrowserRouter>
+      <Appbar />
+      <Routes>
+        <Route path="/test1" element={<Test1 />} />
+        <Route path="/test2" element={<Test2 />} />
+      </Routes>
+    </BrowserRouter>
     </>
   )
 }
+
+function Appbar(){
+
+  const navigate=useNavigate();
+
+  return (
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <button
+            onClick={()=>{
+              navigate("/test1")
+            }}>
+              Test1
+            </button>
+          </li>
+          <li>
+            <button
+            onClick={()=>{
+              navigate("/test2")
+            }}>
+              Test2
+            </button>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  )
+}
+
+function Test1(){
+  return <div>Test1</div>
+}
+function Test2(){
+  return <div>Test2</div>
+}
+
 
 export default App
