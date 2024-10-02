@@ -3,6 +3,8 @@
 import { useContext, useState } from "react"
 import { CountContext } from "./context";
 import { Navigate } from "react-router-dom";
+import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
+import { countAtom } from "./store/atoms/count";
 
 
 function App() {
@@ -17,25 +19,30 @@ function App() {
 
 function Count() {
   return <div>
-    <CountRenderer />
-    <Buttons />
+    <RecoilRoot>
+      <CountRenderer />
+      <Buttons />
+    </RecoilRoot>
   </div>
 }
 
 function CountRenderer() {
-  return <div>
+  const count= useRecoilValue(countAtom);
 
+  return <div>
+    <h1>{count}</h1>
   </div>
 }
 
 function Buttons() {
+  const [count, setCount] = useRecoilState(countAtom);
   return <div>
     <button onClick={() => {
-
+      setCount(count+1)
     }}>Increase</button>
 
     <button onClick={() => {
-      
+      setCount(count-1);
     }}>Decrease</button>
   </div>
 }
