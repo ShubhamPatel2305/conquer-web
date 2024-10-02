@@ -2,16 +2,24 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useState } from "react"
 import { CountContext } from "./context";
-import { Navigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import { RecoilRoot, useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { countAtom } from "./store/atoms/count";
 import { isEvenOdd } from "./store/atoms/isEvenOdd";
+import TodoFilter from "./components/TodoFilter";
 
 
 function App() {
   return (
     <div>
-        <Count />
+      <RecoilRoot>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Count />} /> 
+          <Route path="/todofilter" element={<TodoFilter />} /> 
+        </Routes>
+      </BrowserRouter>
+      </RecoilRoot>
     </div>
   )
 }
