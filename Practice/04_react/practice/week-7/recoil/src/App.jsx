@@ -5,6 +5,7 @@ import { CountContext } from "./context";
 import { Navigate } from "react-router-dom";
 import { RecoilRoot, useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { countAtom } from "./store/atoms/count";
+import { isEvenOdd } from "./store/atoms/isEvenOdd";
 
 
 function App() {
@@ -21,6 +22,7 @@ function Count() {
     <RecoilRoot>
       <CountRenderer />
       <Buttons />
+      <Test />
     </RecoilRoot>
   </div>
 }
@@ -46,6 +48,13 @@ function Buttons() {
       setCount(count=>count-1);
     }}>Decrease</button>
   </div>
+}
+
+function Test(){
+  console.log("test");
+  const evenOdd=useRecoilValue(isEvenOdd);
+
+  return <div>{evenOdd}</div>
 }
 
 export default App
