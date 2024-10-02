@@ -18,6 +18,7 @@ import UseMemo1 from './components/UseMemo1'
 import UseCallbackNeed from './components/UseCallbackNeed'
 import CustomHooks from './components/CustomHooks'
 import { Assignment2 } from './components/usememoassignment/Assignment2'
+import { Assignment1 } from './components/usememoassignment/Assignment1'
 
 var globalCounter = 4;
 
@@ -103,6 +104,7 @@ function App() {
           <Route path="/usecallbackneed" element={ <UseCallbackNeed /> } />
           <Route path="/customhooks" element={<CustomHooks />} />
           <Route path="/usememoassignment/as2" element={<Assignment2 />} />
+          <Route path="/usememoassignment/as1" element={<Assignment1 />} />
         </Routes>
       </>
     </Router>
