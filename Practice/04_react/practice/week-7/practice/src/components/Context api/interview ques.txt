@@ -1,0 +1,5 @@
+Do we use context api to reduce re renders in our application? 
+
+Answer no: it just makes code more readbale and cleaner and avoids prop drilling it will not stop re rendering of components.
+
+both of these come with stae management tools.
