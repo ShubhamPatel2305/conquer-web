@@ -6,6 +6,7 @@ import { filterAtom } from '../store/atoms/filterAtom'
 import { filteredSentencesSelector } from '../store/atoms/filteredSentencesSelector'
 
 const TodoFilter = () => {
+    //we could also have use eseffect []
     const setFilter=useSetRecoilState(filterAtom);
     const filteres=useRecoilValue(filteredSentencesSelector);
   return (
