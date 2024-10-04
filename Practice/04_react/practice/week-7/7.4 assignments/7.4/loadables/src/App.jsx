@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import './App.css'
-import { RecoilRoot, useRecoilStateLoadable } from 'recoil';
+import { RecoilRoot, useRecoilStateLoadable, useRecoilValue } from 'recoil';
 import { todosAtomFamily } from './atoms';
 
 function App() {
@@ -19,7 +19,8 @@ function App() {
 
 function Todo({id}) {
   const [todoLoadable, setTodo] = useRecoilStateLoadable(todosAtomFamily(id));
-   
+  // const todo=useRecoilValue(todosAtomFamily(id));
+   //we could have also fetched data using the commented simple useRecoilValue but as this is a backend call it can take time we can use the current useRecoilLoadable and handle loading and error stages. also we can use suspense
   switch (todoLoadable.state) {
     case 'hasValue':
       return (
@@ -33,6 +34,12 @@ function Todo({id}) {
     case 'hasError':
       return <div>Error: {todoLoadable.contents.message}</div>;
   }
+  // return (
+  //   <div>
+  //     <h2>{todo.title}</h2>
+  //     <p>{todo.description}</p>
+  //   </div>
+  //   );
 }
 
 export default App
