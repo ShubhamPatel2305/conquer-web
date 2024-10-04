@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { atomFamily, selectorFamily } from "recoil";
 import axios from "axios";
 
@@ -6,9 +7,10 @@ export const todosAtomFamily = atomFamily({
   default: selectorFamily({
     key: "todoSelectorFamily",
     get: (id) => async ({get}) => {
-      await new Promise(r => setTimeout(r, 5000));
-      const res = await axios.get(`https://sum-server.100xdevs.com/todo?id=${id}`);
-      return res.data.todo;
+      //this is a function that returns another function
+      const res = await axios.get(`https://fakestoreapi.com/products/${id}`);
+      console.log(res.data);
+      return res.data;
     },
   })
 });
