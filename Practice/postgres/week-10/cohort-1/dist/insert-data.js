@@ -14,6 +14,22 @@ function insertData() {
     return __awaiter(this, void 0, void 0, function* () {
         const client = yield (0, utils_1.getClient)();
         try {
+            const insertUserQuery = `
+            INSERT INTO users (username, email, password)
+            VALUES 
+                ('john_doe', 'john.doe@example.com', 'password123'),
+                ('jane_smith', 'jane.smith@example.com', 'pass456'),
+                ('alice_jones', 'alice.jones@example.com', 'securePass789'),
+                ('bob_brown', 'bob.brown@example.com', 'pass321'),
+                ('charlie_clark', 'charlie.clark@example.com', 'password567'),
+                ('dave_evans', 'dave.evans@example.com', 'superSecret234'),
+                ('ella_white', 'ella.white@example.com', 'ellapass789'),
+                ('frank_green', 'frank.green@example.com', 'greenPassword001'),
+                ('george_black', 'george.black@example.com', 'blackPass999'),
+                ('helen_gray', 'helen.gray@example.com', 'graySecret456');
+        `;
+            yield client.query(insertUserQuery);
+            console.log("Data inserted successfully into 'users' table!");
             const insertAddressesQuery = `
             INSERT INTO addresses (user_id, city, country, street, pincode)
             VALUES 
