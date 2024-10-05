@@ -16,7 +16,7 @@ datasource db {
 }
         
 
-model user{
+model User{
   id        Int      @id @default(autoincrement()) //primary key auto increment by default
   email     String   @unique
   firstName String?
@@ -24,9 +24,10 @@ model user{
   password  String
 }
 
-model todo{
+model Todo{
   id Int @id @default(autoincrement())
   title String
   done Boolean @default(false)
   description String
+  userId Int
 }
