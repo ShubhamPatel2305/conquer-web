@@ -4,6 +4,9 @@ main = "src/index.ts"
 compatibility_date = "2024-10-04"
 compatibility_flags = ["nodejs_compat"]
 
+[vars]
+DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiMDlhYzdiMzEtMDQ2OS00NmYxLTg5YWYtNmVjOWFkZDY4Mjg1IiwidGVuYW50X2lkIjoiNTk5MDhjN2E2NGZhNTgxYjJlMzk4NTljMzhkZjE2YmZiMDVkN2Q2MjQzNzY3MGUyMTk3MGUzZTQ4YTU2NWNjNCIsImludGVybmFsX3NlY3JldCI6ImJjZTE1YzczLTk4NzUtNDIzZC1hYWE3LTBmMzMyMDM4MDcwMyJ9.HFacHmcyyPVO_sXxSanC96uhSFtbdJQllvOcK0Z3fIk"
+
 # Workers Logs
 # Docs: https://developers.cloudflare.com/workers/observability/logs/workers-logs/
 # Configuration: https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs

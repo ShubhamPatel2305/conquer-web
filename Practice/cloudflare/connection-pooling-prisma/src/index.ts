@@ -11,8 +11,28 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+import { PrismaClient } from '@prisma/client/edge'
+import { withAccelerate } from '@prisma/extension-accelerate'
+
+export interface Env{
+	DATABASE_URL: string
+}
+
 export default {
-	async fetch(request, env, ctx): Promise<Response> {
-		return new Response('Hello World!');
+	async fetch(request:Request, env:Env, ctx:ExecutionContext): Promise<Response> {
+		const prisma = new PrismaClient({
+			datasourceUrl: env.DATABASE_URL,
+		}).$extends(withAccelerate())
+		const resp=await prisma.log.create({
+			data:{
+				level:'Info',
+				message:`${request.method} , ${request.url}`,
+				meta:{
+					headers: JSON.stringify(request.headers),
+				},
+			},
+		})
+
+		return Response.json(resp);
 	},
 } satisfies ExportedHandler<Env>;
