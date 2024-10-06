@@ -20,6 +20,13 @@ export interface Env{
 
 export default {
 	async fetch(request:Request, env:Env, ctx:ExecutionContext): Promise<Response> {
+		const url = new URL(request.url);
+
+		// Prevent handling of favicon.ico requests
+		if (url.pathname === '/favicon.ico') {
+		return new Response('Not found', { status: 404 });
+		}
+		
 		const prisma = new PrismaClient({
 			datasourceUrl: env.DATABASE_URL,
 		}).$extends(withAccelerate())
