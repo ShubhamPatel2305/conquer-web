@@ -1,3 +1,4 @@
+"use client"
 import { TestComponent } from "@/components/Test"
 
 const page = () => {
