@@ -1,7 +1,11 @@
+import { TestComponent } from "@/components/Test"
 
 const page = () => {
   return (
-    <div>sgnin</div>
+    <div>
+      sgnin
+      <TestComponent />  
+    </div>
   )
 }
 
