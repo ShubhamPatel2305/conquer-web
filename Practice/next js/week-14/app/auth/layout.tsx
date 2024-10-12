@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function RootLayout({
     children,
   }: {
@@ -7,7 +9,7 @@ export default function RootLayout({
           <header>Global Header</header>
           {children}
           <footer>Global Footer</footer>
-          </>
+          </>   
     );
   }
   
