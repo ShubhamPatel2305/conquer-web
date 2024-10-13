@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { PrismaClient } from "@prisma/client";
-import axios from "axios";
 
-const client= new PrismaClient();
+import axios from "axios";
+import prisma from "@/db";
 
 
 
@@ -17,7 +16,7 @@ export default async function Home() {
 
     async function betterGetUserDetails(){
       try {
-        const user=await client.user.findFirst({});
+        const user=await prisma.user.findFirst({});
         return {
           email:user?.username,
           name: user?.password
