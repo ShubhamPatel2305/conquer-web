@@ -1,4 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { PrismaClient } from "@prisma/client";
 import axios from "axios";
+
+const client= new PrismaClient();
 
 
 
@@ -10,12 +14,29 @@ export default async function Home() {
         const response = await axios.get("https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details")
           return response.data;
       }
-  const userData = await getUserDetails();
+
+    async function betterGetUserDetails(){
+      try {
+        const user=await client.user.findFirst({});
+        return {
+          email:user?.username,
+          name: user?.password
+        }
+      } catch (error) {
+        return{
+          error: (error as Error).message
+        }
+      }
+      
+    }
+  // const userData = await getUserDetails();
+  const userData = await betterGetUserDetails();
 
   return (
     <div>
       {userData.email}
       {userData.name}
+      {userData.error && <div>{userData.error}</div>}
     </div>
   );
 }
