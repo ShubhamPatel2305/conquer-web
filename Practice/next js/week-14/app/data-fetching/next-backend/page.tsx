@@ -1,8 +1,5 @@
 import axios from "axios";
 
-
-
-
 //next allows async components now but only in server components 
 export default async function Home() {
     async function getUserDetails() {
